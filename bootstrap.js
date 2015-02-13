@@ -1,5 +1,6 @@
 var Util = require("util");
 var Bot = require("./lib/irc");
+var fs = require("fs");
 
 var YourBot = function(profile) {
 	Bot.call(this, profile);
@@ -25,14 +26,16 @@ YourBot.prototype.unrecognized = function(cx, text) {
 	cx.channel.send_reply(cx.sender, "There is no command: "+text);
 };
 
+// config.json will be a hidden (gitignored) file for obvious reasons....
+var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 var profile = [{
-	host: "irc.freenode.net",
-	port: 6667,
-	nick: "mybot",
-	password: "password_to_authenticate",
-	user: "username",
-	real: "Real Name",
-	channels: ["#channels", "#to", "#join"]
+	host: config.host,
+	port: config.port,
+	nick: config.nick,
+	password: config.password,
+	user: config.user,
+	real: config.real,
+	channels: config.channels
 }];
 
 (new YourBot(profile)).init();
