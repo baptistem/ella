@@ -18,7 +18,7 @@
 		},
 		"w3schools": {
 			"value": "W3Schools is not related to the W3C and has many problems: http://w3fools.com/",
-			"popularity": 157
+			"popularity": 158
 		},
 		"iframe": {
 			"value": "To get the document element of the iframe, use: iframe.contentWindow.document; However, cross-domain access to an iframe is disallowed.",
@@ -90,7 +90,7 @@
 		},
 		"paste": {
 			"value": "Show some code, but don't paste it on the channel. Sites like http://gist.github.com/ and http://bpaste.net/ are cool. You can also use http://jsbin.com , http://requirebin.com or http://jsfiddle.net/ to provide a test case we can run and help you with your problem.",
-			"popularity": 915,
+			"popularity": 916,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -404,7 +404,7 @@
 		},
 		"debug": {
 			"value": "Browser-based debuggers -- Firefox <https://developer.mozilla.org/en-US/docs/Tools/Web_Console>, Safari <https://developer.apple.com/technologies/safari/developer-tools.html>, Chrome <https://developers.google.com/chrome-developer-tools/docs/overview>, Opera <http://www.opera.com/dragonfly/>, IE <http://msdn.microsoft.com/en-us/library/dd565625%28v=vs.85%29>",
-			"popularity": 232,
+			"popularity": 233,
 			"editors": [
 				"j201",
 				"FireFly"
@@ -428,7 +428,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 2228,
+			"popularity": 2229,
 			"editors": [
 				"ashnur"
 			]
@@ -4685,6 +4685,14 @@
 			"alias": "java",
 			"creator": "ljharb",
 			"date": "2014-09-29T04:54:12.979Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"buck": {
+			"value": "somebody",
+			"creator": "Jayflux",
+			"date": "2015-02-14T00:29:40.940Z",
 			"popularity": 1,
 			"editors": [],
 			"changes": []
