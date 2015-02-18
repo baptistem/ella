@@ -8,9 +8,12 @@ var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
 var FeelingLucky = require("./lib/feelinglucky");
 var CanIUseServer = require("./lib/caniuse");
+var hashwebAPI = require("./hashweb");
 
 var Bot = require("./lib/irc");
 var Shared = require("./shared");
+// config.json will be a hidden (gitignored) file for obvious reasons....
+var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 
 var JSBot = function(profile) {
@@ -75,6 +78,12 @@ JSBot.prototype.init = function() {
 
 	this.register_command("ping", this.ping);
 
+	this.register_command("dataja", this.dataja);
+
+	this.register_command("chat", this.chat);
+
+	this.register_command("seen", hashwebAPI.getLastSeen);
+
 	this.on('command_not_found', this.command_not_found);
 
 	this.load_ecma_ref();
@@ -91,6 +100,16 @@ JSBot.prototype.google = function(context, text) {
 
 	context.channel.send_reply (context.intent, "Google search: \""+text+"\" <http://www.google.com/search?q="+encodeURIComponent(text)+">");
 };
+
+JSBot.prototype.chat = function(context, text, something) {
+	// loop through admins
+	for(var i = 0; i < config.users.length; i++) {
+		if (context.sender.name === config.users[i].name && context.sender.host === config.users[i].host) {
+			var channel = context.client.get_channel("#web-testing");
+			channel.send("megalols");
+		}
+	}
+}
 
 
 JSBot.prototype.there_is_no_try = function(context, text) {
@@ -256,8 +275,11 @@ JSBot.prototype.caniuse = function(context, text) {
 	}
 };
 
-// config.json will be a hidden (gitignored) file for obvious reasons....
-var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+JSBot.prototype.dataja = function(ctx, text) {
+	console.log(ctx);
+	ctx.channel.send(ctx.intent + " Don't ask to ask, just ask");
+};
+
 var profile = [{
 	host: config.host,
 	port: config.port,
