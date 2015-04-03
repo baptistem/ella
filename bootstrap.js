@@ -4,6 +4,8 @@ var util = require("util");
 var http = require("http");
 var fs   = require("fs");
 
+var request = require("request");
+
 var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
 var FeelingLucky = require("./lib/feelinglucky");
@@ -14,6 +16,7 @@ var Bot = require("./lib/irc");
 var Shared = require("./shared");
 // config.json will be a hidden (gitignored) file for obvious reasons....
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+var ddgAPi = "https://duckduckgo.com/?q=british%20broadcasting%20corporation&format=json";
 
 
 var JSBot = function(profile) {
@@ -86,12 +89,41 @@ JSBot.prototype.init = function() {
 
 	this.register_command("ops", hashwebAPI.ops);
 
+	this.register_command("ddg", this.ddg);
+
 	this.on('command_not_found', this.command_not_found);
 
 	this.load_ecma_ref();
 
 };
 
+
+JSBot.prototype.ddg = function(context, text) {
+	text = encodeURIComponent(text);
+	request("https://duckduckgo.com/?q="+ text +"&format=json", function(error, response, body) {
+	  if (!error && response.statusCode == 200) {
+	  		try {
+	  			body = JSON.parse(body);
+	  			if (body.Abstract && body.Results && body.Results[0].FirstURL) {
+	  				context.channel.send_reply(context.sender, body.Abstract + " : " + body.Results[0].FirstURL);
+	  			}
+	  			else if (body.Abstract) {
+	  				context.channel.send_reply(context.sender, body.Abstract);
+	  			}
+	  			else if (body.AbstractURL) {
+	  				context.channel.send_reply(context.sender, body.AbstractURL);
+	  			}
+	  			else {
+	  				context.channel.send_reply(context.sender, " No results..sorry");
+	  			}
+	  		} catch(e) {
+	  			 context.channel.send_reply(context.sender, " Oops looks like I couldn't parse the response from DDG")
+	  		}
+  		} else {
+  			context.channel.send_reply(context.sender, " Oops looks like Duck Duck Go gave a bad response :(")
+  		}
+	});
+}
 
 JSBot.prototype.google = function(context, text) {
 
