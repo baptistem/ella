@@ -84,6 +84,8 @@ JSBot.prototype.init = function() {
 
 	this.register_command("seen", hashwebAPI.getLastSeen);
 
+	this.register_command("ops", hashwebAPI.ops);
+
 	this.on('command_not_found', this.command_not_found);
 
 	this.load_ecma_ref();
