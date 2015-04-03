@@ -22,21 +22,21 @@ Retrieves a list of current commands.
 Usage: `!commands`
 
     <eboyjr> !commands
-    <ecmabot> eboyjr: Valid commands are: !commands, !ecma, !find, !forget, !g, !google, !help, !learn, !mdc, !mdn, !re
+    <bot> eboyjr: Valid commands are: !commands, !ecma, !find, !forget, !g, !google, !help, !learn, !mdc, !mdn, !re
 
 ### !ecma
 Searches the ECMA-262 specification table of contents. Links to the section as found in http://es5.github.com/  
 Usage: `!ecma <search text>`
 
     <eboyjr> !ecma null value
-    <ecmabot> eboyjr: Found: 4.3.11 null value <http://es5.github.com/#x4.3.11>
+    <bot> eboyjr: Found: 4.3.11 null value <http://es5.github.com/#x4.3.11>
 
 ### !find
 Performs a search of a factoid in the database.  
 Usage: `!find <factoid>`
 
     <eboyjr> !find frame
-    <ecmabot> eboyjr: No factoid/command named `frame`. Did you mean: iframe, or cross-domain? See !commands for a list of commands.
+    <bot> eboyjr: No factoid/command named `frame`. Did you mean: iframe, or cross-domain? See !commands for a list of commands.
 
 ### !forget
 Removes a factoid from the database.  
@@ -47,24 +47,30 @@ Returns the first Google result for the query.
 Usage: `!g <query>`
 
     <eboyjr> !g v8 javascript engine
-    <ecmabot> eboyjr: v8 - V8 JavaScript Engine - Google Project Hosting <http://code.google.com/p/v8/>
+    <bot> eboyjr: v8 - V8 JavaScript Engine - Google Project Hosting <http://code.google.com/p/v8/>
 
 ### !google
 Returns a link to a Google search page of the search term.  
 Usage: `!google <query>`
 
     <eboyjr> !google opencourseware computational complexity
-    <ecmabot> eboyjr: Google search: "opencourseware computational complexity" <http://www.google.com/search?q=opencourseware%20computational%20complexity>
+    <bot> eboyjr: Google search: "opencourseware computational complexity" <http://www.google.com/search?q=opencourseware%20computational%20complexity>
 
+### !ddg
+Searches Duck Duck Go.
+Usage: `!ddg <query>`
+
+    <eboyjr> !ddg opencourseware computational complexity
+    
 ### !help
 Gives help for a specific command.  
 Usage: `!help <command>`
 
     <eboyjr> !help help
-    <ecmabot> eboyjr: No help for `help`
+    <bot> eboyjr: No help for `help`
 
 ### !learn
-Adds a factoid to the bot.  
+Adds a factoid to the bot. e
 Usage: `!learn <factoid> = <text>`  
 Usage: `!learn alias <factoid> = <factoid>`  
 Usage: `!learn <factoid> =~ s/<expression>/<replace>/<flags>`
@@ -74,25 +80,32 @@ Searches the Mozilla Developer Network.
 Usage: `!mdn <query>`
 
     <eboyjr> !mdn bitwise operators
-    <ecmabot> eboyjr: Bitwise Operators - MDN Docs <https://developer.mozilla.org/en/JavaScript/Reference/Operators/Bitwise_Operators>
+    <bot> eboyjr: Bitwise Operators - MDN Docs <https://developer.mozilla.org/en/JavaScript/Reference/Operators/Bitwise_Operators>
 
 ### !re
 Performs a regular expression match.  
 Usage: `!re <your text here> /<expression>/<flags>`
 
     <eboyjr> !re Hannah Hannah Bo Banana, Fe Fi Fo Fana /.[an]+/g
-    <ecmabot> eboyjr: Matches: 'Hanna', 'Hanna', 'Banana', 'Fana'
+    <bot> eboyjr: Matches: 'Hanna', 'Hanna', 'Banana', 'Fana'
+    
+### !translate
+Transtes a word from 1 language to another
+Usage: `!translate [language] to [language] <text>`
+
+    <eboyjr> !translate french to english bonjour
+    <bot> Good morning
 
 
 ## Factoids
 
-The factoid system in ecmabot is designed to store simple key/value pairs. Accessing a factoid from the database is as simple as:
+The factoid system in bot is designed to store simple key/value pairs. Accessing a factoid from the database is as simple as:
 
     <eboyjr> !help
-    <ecmabot> eboyjr: In order to get help, paste the relevant portions JavaScript in a pastebin (see !paste), and tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !debug).
+    <bot> eboyjr: In order to get help, paste the relevant portions JavaScript in a pastebin (see !paste), and tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !debug).
 
 You can direct the responses of your command with the `@` character, followed by a nick.
 
     <phpman3000> HAI GUYS ... uh havin a bit of trubble with this script... i get TypeError: document.crateElenemt is not a function how do i fixx this??
     <eboyjr> !spelling @ phpman3000
-    <ecmabot> phpman3000: Spelling and capitalization are important in programming, unless you are using PHP.
+    <bot> phpman3000: Spelling and capitalization are important in programming, unless you are using PHP.
