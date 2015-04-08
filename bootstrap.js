@@ -310,7 +310,6 @@ JSBot.prototype.caniuse = function(context, text) {
 };
 
 JSBot.prototype.dataja = function(ctx, text) {
-	console.log(ctx);
 	ctx.channel.send(ctx.intent + " Don't ask to ask, just ask");
 };
 
