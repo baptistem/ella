@@ -5,6 +5,7 @@ var http = require("http");
 var fs   = require("fs");
 
 var request = require("request");
+var cheerio = require('cheerio');
 
 var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
@@ -17,6 +18,7 @@ var Shared = require("./shared");
 // config.json will be a hidden (gitignored) file for obvious reasons....
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 var ddgAPi = "https://duckduckgo.com/?q=british%20broadcasting%20corporation&format=json";
+var urlRegex = new RegExp("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?");
 
 
 var JSBot = function(profile) {
@@ -35,6 +37,7 @@ util.inherits(JSBot, Bot);
 
 
 JSBot.prototype.init = function() {
+	var that = this;
 	Bot.prototype.init.call(this);
 
 	this.register_listener(this.executeRegex, Shared.execute_js);
@@ -83,15 +86,45 @@ JSBot.prototype.init = function() {
 
 	this.register_command("dataja", this.dataja);
 
-	this.register_command("chat", this.chat);
-
 	this.register_command("seen", hashwebAPI.getLastSeen);
 
 	this.register_command("ops", hashwebAPI.ops);
 
 	this.register_command("ddg", this.ddg);
 
+	this.register_command("beers", this.do_beers);
+
 	this.on('command_not_found', this.command_not_found);
+
+	this.on("pm", function(context, text) {
+		channel = text.match(/^(\#[a-zA-Z0-9-]+)/);
+		for (var i=0;i < config.users.length ; i++) {
+			/* Check the config if its a valid user */
+			if (config.users[i].host === context.host && channel) {
+				channel = context.client.get_channel(channel);
+				text = text.replace(/^(\#[a-zA-Z0-9-]+) /, "");
+				channel.send(text.trim());
+			}
+		}
+	});
+
+	/* scan messages for links and print titles */
+	this.on("message", function(context, text, msg) {
+		channel = context.client.get_channel(context.name);
+		/* request only deals with urls which begin with http(s) */
+		if (msg.match(urlRegex) && msg.match(/^http[s]?/)) {
+			/* Make request to URl and get the title */
+			var url = msg.match(urlRegex)[0];
+			request(url, function(error, response, body) {
+				if (!error && response.statusCode == 200) {
+					$ = cheerio.load(body);
+					var title = $("title").text();
+					channel.send("Title: " + title);
+				}
+			});
+
+		};
+	});
 
 	this.load_ecma_ref();
 
@@ -134,17 +167,6 @@ JSBot.prototype.google = function(context, text) {
 
 	context.channel.send_reply (context.intent, "Google search: \""+text+"\" <http://www.google.com/search?q="+encodeURIComponent(text)+">");
 };
-
-JSBot.prototype.chat = function(context, text, something) {
-	// loop through admins
-	for(var i = 0; i < config.users.length; i++) {
-		if (context.sender.name === config.users[i].name && context.sender.host === config.users[i].host) {
-			var channel = context.client.get_channel("#web-testing");
-			channel.send("megalols");
-		}
-	}
-}
-
 
 JSBot.prototype.there_is_no_try = function(context, text) {
 	var hours = 1000*60*60;

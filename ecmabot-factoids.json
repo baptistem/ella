@@ -1029,7 +1029,7 @@
 		},
 		"lol": {
 			"value": "Thou shalt not type LOL unless you are really laughing out loud.",
-			"popularity": 22
+			"popularity": 24
 		},
 		"equivalent of x": {
 			"value": "Instead of asking \"What's the equivalent of language Y's X\", describe the feature you want. Chances are we don't know what language Y is or what feature X does.",
@@ -1429,7 +1429,7 @@
 		},
 		"hello": {
 			"value": "hello",
-			"popularity": 80,
+			"popularity": 89,
 			"editors": [
 				"PigDude"
 			]

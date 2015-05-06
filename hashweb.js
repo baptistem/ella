@@ -1,24 +1,17 @@
 var http = require("http");
 var fs   = require("fs"); 
+var request = require("request");
 
 var userUrl = "http://hashweb.org/api/stats/users/";
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
-    function callStats(user, callback) {
-    http.get(userUrl + user, function(res) {
-    var body = '';
-
-    res.on('data', function(chunk) {
-        body += chunk;
-    });
-
-    res.on('end', function() {
-        var response = JSON.parse(body)
-        callback(response);
-        });
-    }).on('error', function(e) {
-          console.log("Got error: ", e);
-    });
+function callStats(user, callback) {
+    request(userUrl + user, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var response = JSON.parse(body)
+            callback(response);
+        }
+    })
 }
 
 module.exports = {
@@ -26,7 +19,12 @@ module.exports = {
     // Use the Hashweb API to get the last user seen
     getLastSeen: function(context, username) {
         callStats(username, function(data) {
-            context.channel.send_reply(context.sender, data.username + " was last seen " + data.userNotSeenFor.days + " days " + data.userNotSeenFor.hours + " hours " + data.userNotSeenFor.minutes + " minutes ago saying: " + data.lastSeen.message);
+            var msg = "";
+            days = (data.userNotSeenFor.days) ? data.userNotSeenFor.days + " days " : "";
+            hours = (data.userNotSeenFor.hours) ? data.userNotSeenFor.hours + " hours " : "";
+            minutes = (data.userNotSeenFor.minutes) ? data.userNotSeenFor.minutes + " minutes" : "";
+            msg = msg + data.username + " was last seen in #web " + days + hours + minutes + " ago: <" + data.username + "> " + data.lastSeen.message;
+            context.channel.send_reply(context.sender, msg);
         });
     },
 
