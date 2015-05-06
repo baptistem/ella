@@ -4,8 +4,11 @@ var util = require("util");
 var http = require("http");
 var fs   = require("fs");
 
+var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+
 var request = require("request");
 var cheerio = require('cheerio');
+var wolfram = require('wolfram-alpha').createClient(config.wolframAPI, opts);
 
 var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
@@ -13,10 +16,11 @@ var FeelingLucky = require("./lib/feelinglucky");
 var CanIUseServer = require("./lib/caniuse");
 var hashwebAPI = require("./hashweb");
 
+
 var Bot = require("./lib/irc");
 var Shared = require("./shared");
 // config.json will be a hidden (gitignored) file for obvious reasons....
-var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+
 var ddgAPi = "https://duckduckgo.com/?q=british%20broadcasting%20corporation&format=json";
 var urlRegex = new RegExp("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?");
 
@@ -94,6 +98,10 @@ JSBot.prototype.init = function() {
 
 	this.register_command("beers", this.do_beers);
 
+	this.register_command("calc", this.calc, {
+		help: "Wolfram Alpha calculations. Usage !calc [query]"
+	});
+
 	this.on('command_not_found', this.command_not_found);
 
 	this.on("pm", function(context, text) {
@@ -158,6 +166,13 @@ JSBot.prototype.ddg = function(context, text) {
 	});
 }
 
+
+JSBot.prototype.calc = function(context, text) {
+	wolfram.query(text, function (err, result) {
+  		if (err) throw err;
+  		context.channel.send_reply(context.sender, result);
+	});
+}
 JSBot.prototype.google = function(context, text) {
 
 	if (!text) {
