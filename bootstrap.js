@@ -8,7 +8,7 @@ var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 var request = require("request");
 var cheerio = require('cheerio');
-var wolfram = require('wolfram-alpha').createClient(config.wolframAPI, opts);
+var wolfram = require('wolfram-alpha').createClient(config.wolframAPI);
 
 var Sandbox = require("./lib/sandbox");
 var FactoidServer = require("./lib/factoidserv");
