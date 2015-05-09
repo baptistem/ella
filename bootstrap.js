@@ -98,9 +98,9 @@ JSBot.prototype.init = function() {
 
 	this.register_command("beers", this.do_beers);
 
-	// this.register_command("calc", this.calc, {
-	// 	help: "Wolfram Alpha calculations. Usage !calc [query]"
-	// });
+	this.register_command("calc", this.calc, {
+		help: "Wolfram Alpha calculations. Usage !calc [query]"
+	});
 
 	this.on('command_not_found', this.command_not_found);
 
