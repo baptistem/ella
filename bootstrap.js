@@ -170,9 +170,14 @@ JSBot.prototype.ddg = function(context, text) {
 JSBot.prototype.calc = function(context, text) {
 	wolfram.query(text, function (err, result) {
   		if (err) throw err;
-  		context.channel.send_reply(context.sender, result);
+  		if (result.length >= 1 && ("subpods" in result[1])) {
+ 			context.channel.send_reply(context.sender, result[1].subpods[0].text);
+ 		} else {
+ 			context.channel.send_reply(context.sender, "Sorry, couldn't find a result for that :(");
+ 		}
 	});
-}
+};
+
 JSBot.prototype.google = function(context, text) {
 
 	if (!text) {
