@@ -126,10 +126,8 @@ JSBot.prototype.init = function() {
 			request(url, function(error, response, body) {
 				if (!error && response.statusCode == 200) {
 					$ = cheerio.load(body);
-					var title = $("title").text();
-					// Trim title!
-					title = title.trim();
-					channel.send("Title: " + title);
+					var title = $("title").text().trim();
+					if (title) channel.send("Title: " + title); // Don't bother showing a title if its empty
 				}
 			});
 
