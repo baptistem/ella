@@ -30,6 +30,14 @@ Usage: `!ecma <search text>`
 
     <eboyjr> !ecma null value
     <Ella> eboyjr: Found: 4.3.11 null value <http://es5.github.com/#x4.3.11>
+    
+    
+### !calc
+Do a calculation using Wolfram Alpha
+Usage: `!calc 27 hex to dec`
+
+    <eboyjr> !calc Prime Minister of England
+    <Ella> eboyjr: David Cameron
 
 ### !find
 Performs a search of a factoid in the database.  
