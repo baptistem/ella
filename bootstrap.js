@@ -127,6 +127,8 @@ JSBot.prototype.init = function() {
 				if (!error && response.statusCode == 200) {
 					$ = cheerio.load(body);
 					var title = $("title").text();
+					// Trim title!
+					title = title.trim();
 					channel.send("Title: " + title);
 				}
 			});
