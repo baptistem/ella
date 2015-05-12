@@ -31,5 +31,18 @@ module.exports = {
     // Use the config file to get the list of ops
     ops: function(context, username) {
         context.channel.send_reply(context.sender, config.ops.join(' '));
+    },
+
+    getFirstSeen: function(context, username) {
+        callStats(username, function(data) {
+            var today = moment(),
+                joinedDate = moment(data.firstSeen.timestamp),
+                joinedDateString = joinedDate.format("dddd, MMMM Do YYYY");
+
+            var msg = data.username + " was first seen here " + joinedDate.from(today) + " (" + joinedDateString + "): ";
+            msg = msg + "<" + data.username + ">" + " " + data.firstSeen.message;
+
+            context.channel.send_reply(context.sender, msg);
+        });
     }
 }
