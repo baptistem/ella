@@ -92,7 +92,7 @@ JSBot.prototype.init = function() {
 
 	this.register_command("seen", hashwebAPI.getLastSeen);
 
-	this.register_command("seen", hashwebAPI.getFirstSeen);
+	this.register_command("fseen", hashwebAPI.getFirstSeen);
 
 	this.register_command("ops", hashwebAPI.ops);
 
