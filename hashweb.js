@@ -1,6 +1,7 @@
 var http = require("http");
 var fs   = require("fs"); 
 var request = require("request");
+var moment = require("moment");
 
 var userUrl = "http://hashweb.org/api/stats/users/";
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
