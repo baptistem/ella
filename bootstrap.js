@@ -92,6 +92,8 @@ JSBot.prototype.init = function() {
 
 	this.register_command("seen", hashwebAPI.getLastSeen);
 
+	this.register_command("seen", hashwebAPI.getFirstSeen);
+
 	this.register_command("ops", hashwebAPI.ops);
 
 	this.register_command("ddg", this.ddg);
