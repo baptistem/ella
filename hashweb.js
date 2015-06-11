@@ -64,7 +64,7 @@ module.exports = {
             bansObject.reminderTime = value
             bansObject.reason = false
         }
-        request.post("http://hashweb.org/api/stats/bans/" + bansObject.id, {form:{reminderTime: bansObject.reminderTime, reason: bansObject.reason}}, function(err,httpResponse,body) {
+        request.post("http://hashweb.org/stats/bans/" + bansObject.id, {form:{reminderTime: bansObject.reminderTime, reason: bansObject.reason}}, function(err,httpResponse,body) {
             console.log(err)
             console.log(httpResponse);
             console.log(body);
