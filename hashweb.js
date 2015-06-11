@@ -53,7 +53,7 @@ module.exports = {
         key = bansText.match(/\:(\w*)/)[1]
         value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
         bansObject = {}
-        banObject.id = id;
+        bansObject.id = id;
 
         if (key === "reason") {
             bansObject.reason = value
