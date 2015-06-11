@@ -82,7 +82,7 @@ module.exports = {
     updateBansList: function(context, bansText) {
         if (isAuth(context.intent.host)) {
             request.post("http://hashweb.org/stats/bans/update", function(err,httpResponse,body) {
-                context.channel.send_reply(context.sender, JSON.parse(body).message)
+               context.channel.send_reply(context.sender, JSON.parse(body).message);
             });
         } else {
             context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
