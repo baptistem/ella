@@ -48,21 +48,25 @@ module.exports = {
     },
 
     modifyBansObject: function(context, bansText) {
-        bansText = bansText.trim();
-        id = bansText.match(/^\d+/)[0]
-        key = bansText.match(/\:(\w*)/)[1]
-        value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
-        bansObject = {}
+        if (config.users[i].host === context.host && channel) {
+            bansText = bansText.trim();
+            id = bansText.match(/^\d+/)[0]
+            key = bansText.match(/\:(\w*)/)[1]
+            value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
+            bansObject = {}
 
-        if (key === "reason") {
-            bansObject.reason = value
-        }
+            if (key === "reason") {
+                bansObject.reason = value
+            }
 
-        if (key === "reminderTime") {
-            bansObject.reminderTime = value
+            if (key === "reminderTime") {
+                bansObject.reminderTime = value
+            }
+            request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
+                context.channel.send_reply(context.sender, JSON.parse(body).message)
+            });
+        } else {
+            context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
         }
-        request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
-            context.channel.send_reply(context.sender, JSON.parse(body).message)
-        });
     }
 }
