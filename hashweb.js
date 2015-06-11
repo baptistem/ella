@@ -80,7 +80,7 @@ module.exports = {
     },
 
     updateBansList: function(context, bansText) {
-        if (isAuth(context) {
+        if (isAuth(context)) {
             request.post("http://hashweb.org/stats/bans/update", function(err,httpResponse,body) {
                 context.channel.send_reply(context.sender, JSON.parse(body).message)
             });
