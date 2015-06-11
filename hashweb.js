@@ -53,21 +53,16 @@ module.exports = {
         key = bansText.match(/\:(\w*)/)[1]
         value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
         bansObject = {}
-        bansObject.id = id;
 
         if (key === "reason") {
             bansObject.reason = value
-            bansObject.reminderTime = false
         }
 
         if (key === "reminderTime") {
             bansObject.reminderTime = value
-            bansObject.reason = false
         }
-        request.post("http://hashweb.org/stats/bans/" + bansObject.id, {form:{reminderTime: bansObject.reminderTime, reason: bansObject.reason}}, function(err,httpResponse,body) {
-            console.log(err)
-            console.log(httpResponse);
-            console.log(body);
-        })
+        request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
+            context.channel.send_reply(context.sender, JSON.parse(body.message));
+        });
     }
 }
