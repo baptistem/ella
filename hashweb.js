@@ -45,5 +45,28 @@ module.exports = {
 
             context.channel.send_reply(context.sender, msg);
         });
+    },
+
+    modifyBansObject: function(context, bansText) {
+        bansText = bansText.trim();
+        id = bansText.match(/^\d+/)[0]
+        key = bansText.match(/\:(\w*)/)[1]
+        value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
+        bansOBject{}
+        banObject.id = id;
+
+        if (key === "reason") {
+            bansObject.reason = value
+            bansObject.reminderTime = false
+        }
+
+        if (key === "reminderTime") {
+            bansObject.reminderTime = value
+            bansObject.reason = false
+        }
+        request.post("http://192.168.1.5:8000/stats/bans/" + bansObject.id, {form:{reminderTime: bansObject.reminderTime, reason: bansObject.reason}}, function(err,httpResponse,body) {
+            console.log(httpResponse);
+            console.log(body);
+        })
     }
 }
