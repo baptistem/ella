@@ -15,6 +15,15 @@ function callStats(user, callback) {
     })
 }
 
+function isAuth(host) {
+    for (var i=0;i < config.users.length ; i++) {
+        if (config.users[i].host === host) {
+            return true
+        }
+    }
+    return false;
+}
+
 module.exports = {
 
     // Use the Hashweb API to get the last user seen
@@ -48,28 +57,25 @@ module.exports = {
     },
 
     modifyBansObject: function(context, bansText) {
-        // TODO: make a isAuth? function
-        for (var i=0;i < config.users.length ; i++) {
-            if (config.users[i].host === context.intent.host && channel) {
-                bansText = bansText.trim();
-                id = bansText.match(/^\d+/)[0]
-                key = bansText.match(/\:(\w*)/)[1]
-                value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
-                bansObject = {}
+        if (isAuth(context) {
+            bansText = bansText.trim();
+            id = bansText.match(/^\d+/)[0]
+            key = bansText.match(/\:(\w*)/)[1]
+            value = bansText.match(/^\d+\:\w+\s(.+)/)[1]
+            bansObject = {}
 
-                if (key === "reason") {
-                    bansObject.reason = value
-                }
-
-                if (key === "reminderTime") {
-                    bansObject.reminderTime = value
-                }
-                request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
-                    context.channel.send_reply(context.sender, JSON.parse(body).message)
-                });
-            } else {
-                context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
+            if (key === "reason") {
+                bansObject.reason = value
             }
+
+            if (key === "reminderTime") {
+                bansObject.reminderTime = value
+            }
+            request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
+                context.channel.send_reply(context.sender, JSON.parse(body).message)
+            });
+        } else {
+            context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
         }
     }
 }
