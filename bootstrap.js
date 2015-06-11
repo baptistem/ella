@@ -97,7 +97,9 @@ JSBot.prototype.init = function() {
 	this.register_command("ops", hashwebAPI.ops);
 
 	this.register_command("baninfo",  hashwebAPI.modifyBansObject);
-	
+
+	this.register_command("updatebans",  hashwebAPI.updateBansList);
+
 	this.register_command("ddg", this.ddg);
 
 	this.register_command("beers", this.do_beers);

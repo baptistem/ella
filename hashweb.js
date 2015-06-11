@@ -57,7 +57,7 @@ module.exports = {
     },
 
     modifyBansObject: function(context, bansText) {
-        if (isAuth(context.intent.host)) {
+        if (isAuth(context) {
             bansText = bansText.trim();
             id = bansText.match(/^\d+/)[0]
             key = bansText.match(/\:(\w*)/)[1]
@@ -72,6 +72,16 @@ module.exports = {
                 bansObject.reminderTime = value
             }
             request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
+                context.channel.send_reply(context.sender, JSON.parse(body).message)
+            });
+        } else {
+            context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
+        }
+    },
+
+    updateBansList: function(context, bansText) {
+        if (isAuth(context) {
+            request.post("http://hashweb.org/stats/bans/update", function(err,httpResponse,body) {
                 context.channel.send_reply(context.sender, JSON.parse(body).message)
             });
         } else {
