@@ -57,7 +57,7 @@ module.exports = {
     },
 
     modifyBansObject: function(context, bansText) {
-        if (isAuth(context)) {
+        if (isAuth(context.intent.host)) {
             bansText = bansText.trim();
             id = bansText.match(/^\d+/)[0]
             key = bansText.match(/\:(\w*)/)[1]
@@ -80,7 +80,7 @@ module.exports = {
     },
 
     updateBansList: function(context, bansText) {
-        if (isAuth(context)) {
+        if (isAuth(context.intent.host)) {
             request.post("http://hashweb.org/stats/bans/update", function(err,httpResponse,body) {
                 context.channel.send_reply(context.sender, JSON.parse(body).message)
             });
