@@ -90,7 +90,7 @@
 		},
 		"paste": {
 			"value": "Show some code, but don't paste it on the channel. Sites like http://gist.github.com/ and http://bpaste.net/ are cool. You can also use http://jsbin.com , http://requirebin.com or http://jsfiddle.net/ to provide a test case we can run and help you with your problem.",
-			"popularity": 916,
+			"popularity": 918,
 			"editors": [
 				"niggler",
 				"gkatsev",
@@ -247,12 +247,30 @@
 			"popularity": 14
 		},
 		"recursion": {
-			"value": "See !recursion",
-			"popularity": 30
+			"value": "!learn recursion",
+			"popularity": 32,
+			"editors": [
+				"inoutput",
+				"TheHackOPs"
+			],
+			"changes": [
+				{
+					"date": "2015-05-06T23:53:57.950Z",
+					"editor": "inoutput",
+					"old-value": "See !recursion",
+					"new-value": "!learn recursion"
+				},
+				{
+					"date": "2015-05-19T02:16:54.078Z",
+					"editor": "TheHackOPs",
+					"old-value": "!learn recursion",
+					"new-value": "!learn recursion"
+				}
+			]
 		},
 		"ask": {
 			"value": "Don't ask to ask, or if anyone is here or alive or uses something. Just ask your question. http://www.mikeash.com/getting_answers.html http://www.catb.org/esr/faqs/smart-questions.html",
-			"popularity": 406,
+			"popularity": 408,
 			"editors": [
 				"hemanth",
 				"eboy",
@@ -312,11 +330,11 @@
 		},
 		"mdc": {
 			"value": "Mozilla Developer Network @ http://developer.mozilla.org/",
-			"popularity": 52
+			"popularity": 55
 		},
 		"mdn": {
 			"alias": "mdc",
-			"popularity": 41
+			"popularity": 43
 		},
 		"debugging": {
 			"alias": "console"
@@ -428,7 +446,7 @@
 		},
 		"help": {
 			"value": "For help, ask your question. Be patient. Code samples should be pasted in a paste service (see !paste). Tell us 1) what you want to happen, 2) what is actually happening, and 3) any error messages you find (see !describe and !debug).",
-			"popularity": 2229,
+			"popularity": 2237,
 			"editors": [
 				"ashnur"
 			]
@@ -474,11 +492,12 @@
 			"alias": "doesn't work"
 		},
 		"resources": {
-			"value": "!books, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse, !crockford",
-			"popularity": 9,
+			"value": "https://developer.mozilla.org/en-US/ http://www.codecademy.com/ http://www.w3schools.com/ http://hashcss.com/schools/",
+			"popularity": 10,
 			"editors": [
 				"Agamemnus",
-				"Havvy"
+				"Havvy",
+				"coachz"
 			],
 			"changes": [
 				{
@@ -492,6 +511,12 @@
 					"editor": "Havvy",
 					"old-value": "!eloquent, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse",
 					"new-value": "!books, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse, !crockford"
+				},
+				{
+					"date": "2015-05-22T13:51:17.254Z",
+					"editor": "coachz",
+					"old-value": "!books, !es5, !gcu, !mdn, !owsc, !quirksmode, !caniuse, !crockford",
+					"new-value": "https://developer.mozilla.org/en-US/ http://www.codecademy.com/ http://www.w3schools.com/ http://hashcss.com/schools/"
 				}
 			]
 		},
@@ -695,11 +720,11 @@
 		},
 		"js": {
 			"value": "did you mean: recursive acronym for JavaScript is not Java.",
-			"popularity": 17
+			"popularity": 18
 		},
 		"comparisons": {
 			"value": "Using == and != should be avoided, since they perform coercion giving unexpected results. Use === and !== instead. See also: http://zero.milosz.ca/ http://es5.github.io/#x11.9.3",
-			"popularity": 66,
+			"popularity": 67,
 			"editors": [
 				"jrajav",
 				"j201",
@@ -855,7 +880,7 @@
 		},
 		"testcase": {
 			"value": "Show some code, but don't paste it on the channel. Sites like http://gist.github.com/ and http://bpaste.net/ are cool. You can also use http://jsbin.com , http://requirebin.com or http://jsfiddle.net/ to provide a test case we can run and help you with your problem.",
-			"popularity": 62,
+			"popularity": 63,
 			"editors": [
 				"MJCD",
 				"totemizer",
@@ -1028,8 +1053,19 @@
 			"popularity": 4
 		},
 		"lol": {
-			"value": "Thou shalt not type LOL unless you are really laughing out loud.",
-			"popularity": 24
+			"value": "lol",
+			"popularity": 24,
+			"editors": [
+				"NotTheHackOps"
+			],
+			"changes": [
+				{
+					"date": "2015-05-06T23:53:11.761Z",
+					"editor": "NotTheHackOps",
+					"old-value": "Thou shalt not type LOL unless you are really laughing out loud.",
+					"new-value": "lol"
+				}
+			]
 		},
 		"equivalent of x": {
 			"value": "Instead of asking \"What's the equivalent of language Y's X\", describe the feature you want. Chances are we don't know what language Y is or what feature X does.",
@@ -1547,7 +1583,7 @@
 		},
 		"functions": {
 			"value": "See !fe vs fd",
-			"popularity": 5
+			"popularity": 6
 		},
 		"ssjs": {
 			"value": "Server-side JavaScript: Node.js and other V8 distributions (C++), Rhino (JVM), Spidermonkey (C).",
@@ -1712,10 +1748,19 @@
 			"alias": "!>>"
 		},
 		"es6": {
-			"value": "The next version of JavaScript, slated for completion in late 2013. For ES6 features see http://wiki.ecmascript.org/doku.php?id=harmony:proposals. To experiment with ES6 now see http://benvie.github.com/continuum. For availability in browsers see http://kangax.github.com/es5-compat-table/es6",
+			"value": "http://kangax.github.io/compat-table/es6/",
 			"popularity": 21,
 			"editors": [
-				"Benvie"
+				"Benvie",
+				"coachz"
+			],
+			"changes": [
+				{
+					"date": "2015-05-22T14:06:15.088Z",
+					"editor": "coachz",
+					"old-value": "The next version of JavaScript, slated for completion in late 2013. For ES6 features see http://wiki.ecmascript.org/doku.php?id=harmony:proposals. To experiment with ES6 now see http://benvie.github.com/continuum. For availability in browsers see http://kangax.github.com/es5-compat-table/es6",
+					"new-value": "http://kangax.github.io/compat-table/es6/"
+				}
 			]
 		},
 		"concat": {
@@ -1803,11 +1848,11 @@
 		},
 		"i love you": {
 			"value": "I love you too. <3",
-			"popularity": 7
+			"popularity": 13
 		},
 		"<3": {
 			"alias": "i love you",
-			"popularity": 1
+			"popularity": 2
 		},
 		"hipsters": {
 			"value": "hipsters use <!-- --> for all their javascript comments. JS: The Hip Parts: https://gist.github.com/3374141",
@@ -1834,7 +1879,7 @@
 		},
 		"love": {
 			"alias": "i love you",
-			"popularity": 3
+			"popularity": 8
 		},
 		"cthuloops": {
 			"value": "I give you, a cthuloop: for (;;) { } … FOR CTHULU",
@@ -2335,7 +2380,7 @@
 		},
 		"hamster": {
 			"value": "Java is to Javascript like ham is to hamster.",
-			"popularity": 3,
+			"popularity": 4,
 			"creator": "ljharb",
 			"editors": []
 		},
@@ -2384,16 +2429,17 @@
 		},
 		"beer": {
 			"value": "Don't mind if I do! Glug glug glug!",
-			"popularity": 9,
+			"popularity": 12,
 			"creator": "CoverSlide",
 			"editors": []
 		},
 		"stop": {
-			"value": "hammer time",
+			"value": "While some offtopic converstation is ok at TIMES, please take this to #web-social if you wish to continue.  Thanks. The Management. :-)",
 			"popularity": 7,
 			"creator": "eboy",
 			"editors": [
-				"Maxdamantus"
+				"Maxdamantus",
+				"coachz"
 			],
 			"changes": [
 				{
@@ -2401,6 +2447,12 @@
 					"editor": "Maxdamantus",
 					"old-value": "collaborate and listen",
 					"new-value": "hammer time"
+				},
+				{
+					"date": "2015-05-22T13:30:03.935Z",
+					"editor": "coachz",
+					"old-value": "hammer time",
+					"new-value": "While some offtopic converstation is ok at TIMES, please take this to #web-social if you wish to continue.  Thanks. The Management. :-)"
 				}
 			]
 		},
@@ -2781,7 +2833,7 @@
 		},
 		"fe": {
 			"value": "A function declaration `function declared() {}` & a function expression e.g. `var bar = function expressed() {}`: the former is !hoisted, the latter can be immediately invoked (see !iife) and can be anonymous (eg can omit the name \"expressed\"). \"function\" as the first word of a statement at global scope or directly inside a function starts a function declaration; otherwise, it starts a function expression.",
-			"popularity": 50,
+			"popularity": 52,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb"
@@ -2789,7 +2841,7 @@
 		},
 		"fd": {
 			"alias": "fe",
-			"popularity": 1
+			"popularity": 2
 		},
 		"json object": {
 			"value": "JSON object is an often misused buzzword that does not have a well-defined meaning. See https://github.com/robotlolita/screw-the-buzzwords/wiki/JSON for alternatives to express what you mean.",
@@ -2801,7 +2853,7 @@
 		},
 		"think": {
 			"value": "\"Give me 6 hours to chop down a tree and I will spend the first 4 sharpening my axe.\" - Abraham Lincoln",
-			"popularity": 2,
+			"popularity": 3,
 			"creator": "ljharb",
 			"editors": [
 				"ljharb"
@@ -3084,14 +3136,15 @@
 			]
 		},
 		"fp": {
-			"value": "Functional programming: A style of programming which uses only pure (mathematical) functions, avoiding side-effects",
+			"value": "http://code.tutsplus.com/courses/functional-programming-in-javascript",
 			"popularity": 25,
 			"creator": "Sorella",
 			"editors": [
 				"Sorella",
 				"Maxdamantus",
 				"j201",
-				"ashnur"
+				"ashnur",
+				"coachz"
 			],
 			"changes": [
 				{
@@ -3113,6 +3166,12 @@
 					"editor": "ashnur",
 					"old-value": "Functional programming: 1) A style of programming which uses only pure (mathematical) functions, avoiding side-effects; 2) A term used loosely by many to refer to higher-order programming, where functions or procedures are first-class citizens and are passed around to influence the effects of other functions or procedures",
 					"new-value": "Functional programming: A style of programming which uses only pure (mathematical) functions, avoiding side-effects"
+				},
+				{
+					"date": "2015-05-08T17:57:22.027Z",
+					"editor": "coachz",
+					"old-value": "Functional programming: A style of programming which uses only pure (mathematical) functions, avoiding side-effects",
+					"new-value": "http://code.tutsplus.com/courses/functional-programming-in-javascript"
 				}
 			]
 		},
@@ -3272,7 +3331,7 @@
 		},
 		"important": {
 			"value": "CSS: \"An !important declaration provides a way for a stylesheet author to give a CSS value more weight than it naturally has.\" | More: http://coding.smashingmagazine.com/2010/11/02/the-important-css-declaration-how-and-when-to-use-it/",
-			"popularity": 1,
+			"popularity": 2,
 			"creator": "MJCD_",
 			"editors": []
 		},
@@ -3492,7 +3551,7 @@
 			"value": "omg",
 			"creator": "urbanizator",
 			"date": "2013-12-23T16:26:17.770Z",
-			"popularity": 31,
+			"popularity": 35,
 			"editors": [],
 			"changes": []
 		},
@@ -4133,7 +4192,7 @@
 			"alias": "comparisons",
 			"creator": "",
 			"date": "2014-03-23T23:44:47.732Z",
-			"popularity": 3,
+			"popularity": 4,
 			"editors": [],
 			"changes": []
 		},
@@ -4354,7 +4413,7 @@
 			"value": "I am supposed to say something compromising, because someone told me to when the channel was pretty quiet.",
 			"creator": "Qbix2",
 			"date": "2014-04-24T00:17:29.237Z",
-			"popularity": 17,
+			"popularity": 19,
 			"editors": [],
 			"changes": []
 		},
@@ -4628,7 +4687,7 @@
 			"value": "jQuery is magical, for example the $ function can be called in any of these ways, and more: $('.a'), $('.a', $(el)) $(el), $([el1, el2]), $({}), $($(el)), $('<div>'), $('<div>', document), $('<div>', {id: 'x'}), $(function(){})",
 			"creator": "GreenJello",
 			"date": "2014-08-20T21:39:11.541Z",
-			"popularity": 0,
+			"popularity": 1,
 			"editors": [],
 			"changes": []
 		},
@@ -4693,7 +4752,435 @@
 			"value": "somebody",
 			"creator": "Jayflux",
 			"date": "2015-02-14T00:29:40.940Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"!learn recursion": {
+			"value": "!learn recursion",
+			"creator": "inoutput",
+			"date": "2015-05-06T23:54:03.867Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"!learn !learn": {
+			"value": "!learn !learn",
+			"creator": "inoutput",
+			"date": "2015-05-06T23:56:32.772Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"!learn": {
+			"value": "!learn !learn",
+			"creator": "inoutput",
+			"date": "2015-05-06T23:56:47.469Z",
+			"popularity": 0,
+			"editors": [
+				"inoutput"
+			],
+			"changes": [
+				{
+					"date": "2015-05-06T23:59:45.860Z",
+					"editor": "inoutput",
+					"old-value": "!learn !learn",
+					"new-value": "!learn !learn"
+				}
+			]
+		},
+		"pingu": {
+			"value": "there are many pingus",
+			"creator": "Jayflux",
+			"date": "2015-05-07T09:39:13.478Z",
+			"popularity": 4,
+			"editors": [],
+			"changes": []
+		},
+		"whatkind": {
+			"value": "what kind of pingu do you like the most?",
+			"creator": "pingu3",
+			"date": "2015-05-07T09:40:12.482Z",
 			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"coachz": {
+			"value": "coachz is the bomb !",
+			"creator": "Jayflux",
+			"date": "2015-05-07T13:01:55.178Z",
+			"popularity": 6,
+			"editors": [
+				"Jayflux",
+				"coachz"
+			],
+			"changes": [
+				{
+					"date": "2015-05-07T13:02:07.624Z",
+					"editor": "Jayflux",
+					"old-value": "is thaifood",
+					"new-value": "coachz is thaifood"
+				},
+				{
+					"date": "2015-05-08T13:51:00.321Z",
+					"editor": "coachz",
+					"old-value": "coachz is thaifood",
+					"new-value": "coachz is the bomb !"
+				}
+			]
+		},
+		"jsgrids": {
+			"value": "http://guriddo.net/  & http://datatables.net/",
+			"creator": "coachz",
+			"date": "2015-05-07T13:02:41.666Z",
+			"popularity": 3,
+			"editors": [],
+			"changes": []
+		},
+		"emailrep": {
+			"value": "http://blog.mailgun.com/art-of-inboxing/  http://documentation.mailgun.com/faqs.html  http://documentation.mailgun.com/best_practices.html",
+			"creator": "coachz",
+			"date": "2015-05-07T14:46:26.312Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"illegal": {
+			"value": "Please do not help people create illegal websites / applications with the intent of exploiting others",
+			"creator": "TheHackOps",
+			"date": "2015-05-07T23:54:05.730Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"obfusication": {
+			"value": "We will not help you to obfusicate anything for the purpose of 'security'",
+			"creator": "TheHackOps",
+			"date": "2015-05-07T23:56:28.927Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"sbo": {
+			"value": "Security by obscurity is not security",
+			"creator": "TheHackOps",
+			"date": "2015-05-07T23:56:54.439Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"trolling": {
+			"value": "DeltaHeavy",
+			"creator": "TheHackOps",
+			"date": "2015-05-07T23:58:36.665Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"buzzwords": {
+			"value": "Dont promote them please",
+			"creator": "TheHackOps",
+			"date": "2015-05-08T00:48:14.364Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"evilbug": {
+			"value": ":D",
+			"creator": "TheHackOps",
+			"date": "2015-05-08T05:05:34.674Z",
+			"popularity": 2,
+			"editors": [
+				"evilbug"
+			],
+			"changes": [
+				{
+					"date": "2015-05-08T05:06:12.523Z",
+					"editor": "evilbug",
+					"old-value": "bully",
+					"new-value": ":D"
+				}
+			]
+		},
+		"thehackops": {
+			"value": "Hates Asp.net",
+			"creator": "evilbug",
+			"date": "2015-05-08T05:07:30.959Z",
+			"popularity": 3,
+			"editors": [
+				"TheHackOps"
+			],
+			"changes": [
+				{
+					"date": "2015-05-08T13:50:53.220Z",
+					"editor": "TheHackOps",
+					"old-value": "asp.net",
+					"new-value": "Hates Asp.net"
+				}
+			]
+		},
+		"deltaheavy": {
+			"value": "\"don't wake the borg!\"",
+			"creator": "coachz",
+			"date": "2015-05-08T13:01:28.353Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"emerson": {
+			"value": "im about 10 seconds away from patching the  bot to only allow !learn in #web-social...",
+			"creator": "coachz",
+			"date": "2015-05-08T13:52:33.119Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"xmaddness": {
+			"value": "<-- what I am doing",
+			"creator": "coachz",
+			"date": "2015-05-08T16:10:48.839Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"billy71": {
+			"value": "I love the duck",
+			"creator": "coachz",
+			"date": "2015-05-08T16:25:28.812Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"privacy": {
+			"value": "http://chronicle.com/article/Why-Privacy-Matters-Even-if/127461/",
+			"creator": "coachz",
+			"date": "2015-05-08T16:50:45.859Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"!seen": {
+			"value": "lol",
+			"creator": "billy71",
+			"date": "2015-05-08T17:04:55.957Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"!seen test": {
+			"value": "lol",
+			"creator": "billy71",
+			"date": "2015-05-08T17:05:09.850Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"fwotw": {
+			"value": "http://quinnjs.com/",
+			"creator": "coachz",
+			"date": "2015-05-08T18:59:15.887Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"pingu2": {
+			"value": "see !pingu3",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:27.868Z",
+			"popularity": 3,
+			"editors": [],
+			"changes": []
+		},
+		"pingu3": {
+			"value": "see !pingu4",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:33.720Z",
+			"popularity": 2,
+			"editors": [],
+			"changes": []
+		},
+		"pingu4": {
+			"value": "see !pingu5",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:36.650Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu6": {
+			"value": "see !pingu7",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:39.223Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu5": {
+			"value": "see !pingu6",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:43.310Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu7": {
+			"value": "see !pingu8",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:47.855Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu8": {
+			"value": "see !pingu9",
+			"creator": "Buck",
+			"date": "2015-05-10T11:17:55.463Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu9": {
+			"value": "see !pingu10",
+			"creator": "Buck",
+			"date": "2015-05-10T11:18:00.190Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu10": {
+			"value": "see !pingu11",
+			"creator": "Buck",
+			"date": "2015-05-10T11:18:03.967Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu11": {
+			"value": "see !pingu12",
+			"creator": "Buck",
+			"date": "2015-05-10T11:18:06.960Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"pingu12": {
+			"value": "see !pingu2",
+			"creator": "Buck",
+			"date": "2015-05-10T11:18:10.031Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"peace": {
+			"value": "http://i.huffpost.com/gen/1915222/images/s-PEACE-EARTH-large.jpg",
+			"creator": "coachz",
+			"date": "2015-05-12T16:34:12.750Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"bestsite": {
+			"value": "http://www.lingscars.com",
+			"creator": "coachz",
+			"date": "2015-05-12T17:13:57.573Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"thependulum": {
+			"value": "The Poet And The Pendulum (https://www.youtube.com/watch?v=1HYgidYaBl8)",
+			"creator": "Jayflux",
+			"date": "2015-05-13T12:24:13.114Z",
+			"popularity": 1,
+			"editors": [
+				"Jayflux"
+			],
+			"changes": [
+				{
+					"date": "2015-05-13T12:25:36.490Z",
+					"editor": "Jayflux",
+					"old-value": "The Poet And The Pendulum",
+					"new-value": "The Poet And The Pendulum (https://www.youtube.com/watch?v=1HYgidYaBl8)"
+				}
+			]
+		},
+		"basel": {
+			"value": "(pi^2)/6 = 1.64493406685",
+			"creator": "festercluck",
+			"date": "2015-05-13T13:09:55.273Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"pro": {
+			"value": "pro bro != pro bono",
+			"creator": "festercluck",
+			"date": "2015-05-13T13:12:21.762Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"probrony": {
+			"value": "new Rony()",
+			"creator": "festercluck",
+			"date": "2015-05-13T13:12:54.952Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"lw": {
+			"value": "http://liveweave.com",
+			"creator": "Buck",
+			"date": "2015-05-17T12:39:54.759Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"bwe": {
+			"value": "The Best Website Ever http://lingscars.com  watch the movies in the FAQ top right",
+			"creator": "coachz",
+			"date": "2015-05-22T12:09:44.679Z",
+			"popularity": 4,
+			"editors": [],
+			"changes": []
+		},
+		"wedding": {
+			"value": "http://yvettesbridalformal.p1r8.net/",
+			"creator": "coachz",
+			"date": "2015-05-22T13:40:14.820Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"calc": {
+			"value": "js",
+			"creator": "Buck",
+			"date": "2015-05-22T15:55:08.387Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"mars": {
+			"value": "Mars is populated entirely by robots",
+			"creator": "Buck",
+			"date": "2015-05-26T17:38:14.853Z",
+			"popularity": 0,
+			"editors": [],
+			"changes": []
+		},
+		"diamond": {
+			"value": "not a metal",
+			"creator": "TheHackOps",
+			"date": "2015-06-01T04:51:41.936Z",
+			"popularity": 1,
+			"editors": [],
+			"changes": []
+		},
+		"die": {
+			"value": "Even dying can be pretty great !  http://www.lingscars.com FAQ What if I die.",
+			"creator": "coachz",
+			"date": "2015-06-01T14:50:33.424Z",
+			"popularity": 0,
 			"editors": [],
 			"changes": []
 		}
@@ -5318,6 +5805,89 @@
 						"editor": "zeph",
 						"old-value": "tittayyys!",
 						"new-value": "\"\""
+					}
+				]
+			}
+		},
+		{
+			"date": "2015-05-08T17:08:41.176Z",
+			"editor": "Obbs",
+			"key": "i",
+			"value": {
+				"value": "Yo",
+				"creator": "Obbs",
+				"date": "2015-05-08T17:07:31.753Z",
+				"popularity": 2,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2015-05-09T16:36:04.184Z",
+			"editor": "Obbs",
+			"key": "triangle",
+			"value": {
+				"value": "Δ",
+				"creator": "Obbs",
+				"date": "2015-05-09T16:33:54.088Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2015-05-09T16:36:36.016Z",
+			"editor": "Obbs",
+			"key": "triangle δ",
+			"value": {
+				"value": "b² - 4ac",
+				"creator": "Obbs",
+				"date": "2015-05-09T16:36:11.651Z",
+				"popularity": 0,
+				"editors": [],
+				"changes": []
+			}
+		},
+		{
+			"date": "2015-05-15T13:35:47.999Z",
+			"editor": "emerson",
+			"key": "experts",
+			"value": {
+				"value": "bar",
+				"creator": "coachz",
+				"date": "2015-05-15T13:29:28.272Z",
+				"popularity": 0,
+				"editors": [
+					"Buck"
+				],
+				"changes": [
+					{
+						"date": "2015-05-15T13:35:45.791Z",
+						"editor": "Buck",
+						"old-value": "pokk Jayflux emerson buck tjahan",
+						"new-value": "bar"
+					}
+				]
+			}
+		},
+		{
+			"date": "2015-05-19T15:10:56.374Z",
+			"editor": "emerson",
+			"key": "op",
+			"value": {
+				"value": "Haha, you are alone. Nobody will come to help you.",
+				"creator": "billy71",
+				"date": "2015-05-08T00:01:05.722Z",
+				"popularity": 4,
+				"editors": [
+					"billy71"
+				],
+				"changes": [
+					{
+						"date": "2015-05-08T00:01:52.167Z",
+						"editor": "billy71",
+						"old-value": "Haha, nobody will come.",
+						"new-value": "Haha, you are alone. Nobody will come to help you."
 					}
 				]
 			}

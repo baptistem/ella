@@ -50,7 +50,7 @@ module.exports = {
     modifyBansObject: function(context, bansText) {
         // TODO: make a isAuth? function
         for (var i=0;i < config.users.length ; i++) {
-            if (config.users[i].host === context.host && channel) {
+            if (config.users[i].host === context.intent.host && channel) {
                 bansText = bansText.trim();
                 id = bansText.match(/^\d+/)[0]
                 key = bansText.match(/\:(\w*)/)[1]
