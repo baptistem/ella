@@ -71,5 +71,5 @@ module.exports = {
                 context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
             }
         }
-    };
+    }
 }
