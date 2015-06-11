@@ -62,8 +62,12 @@ module.exports = {
             bansObject.reminderTime = value
         }
         request.post("http://hashweb.org/stats/bans/" + id, {form:bansObject}, function(err,httpResponse,body) {
+<<<<<<< HEAD
+            context.channel.send_reply(context.sender, JSON.parse(body).message)
+=======
             // context.channel.send_reply(context.sender, JSON.parse(body.message));
             console.log(body);
+>>>>>>> 2a8aeea72f4a90ede5c48c32052effa66e216e71
         });
     }
 }
