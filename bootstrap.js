@@ -111,7 +111,7 @@ JSBot.prototype.init = function() {
 	this.on('command_not_found', this.command_not_found);
 
 	this.on("pm", function(context, text) {
-		channel = text.match(/^(\#[a-zA-Z0-9-]+)/);
+		var channel = text.match(/^(\#[a-zA-Z0-9-]+)/);
 		for (var i=0;i < config.users.length ; i++) {
 			/* Check the config if its a valid user */
 			if (config.users[i].host === context.host && channel) {
@@ -124,7 +124,7 @@ JSBot.prototype.init = function() {
 
 	/* scan messages for links and print titles */
 	this.on("message", function(context, text, msg) {
-		channel = context.client.get_channel(context.name);
+		var channel = context.client.get_channel(context.name);
 		/* request only deals with urls which begin with http(s) */
 		if (msg.match(urlRegex) && msg.match(/^http[s]?/)) {
 			/* Make request to URl and get the title */
