@@ -25,6 +25,18 @@ var ddgAPi = "https://duckduckgo.com/?q=british%20broadcasting%20corporation&for
 var urlRegex = new RegExp("^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?");
 
 
+function isBanWord(msg) {
+
+  var banWords = config.banWords.split(" ");
+  for (var i = 0; i < banWords.length; i++) {
+    if (msg.toLowerCase().indexOf(banWords[i]) > -1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+
 var JSBot = function(profile) {
 	this.sandbox = new Sandbox(path.join(__dirname, "ecmabot-utils.js"));
 	this.factoids = new FactoidServer(path.join(__dirname, "ecmabot-factoids.json"));
@@ -118,7 +130,7 @@ JSBot.prototype.init = function() {
 				channel = context.client.get_channel(channel);
 				text = text.replace(/^(\#[a-zA-Z0-9-]+) /, "");
 				channel.send(text.trim());
-		    
+
 			}
 		}
 	});
@@ -140,6 +152,22 @@ JSBot.prototype.init = function() {
 
 		};
 	});
+
+  /* This will allow ella to kick/ban if certain words are said within a message */
+  this.on("message", function(channel, user, msg) {
+    if (isBanWord(msg)) {
+      channel.client.get_user('chanserv').send('op ' + channel.name + ' ' + channel.client.profile.nick);
+      setTimeout(function() {
+        channel.client.raw('MODE ' + channel.name + ' +b *!*@' + user.host);
+        channel.client.raw('KICK ' + channel.name + ' ' + user.name);
+        channel.client.get_user('chanserv').send('deop ' + channel.name + ' ' + channel.client.profile.nick);
+        // Ella may or may not be in #web-ops
+        if (channel.client.get_channel('#web-ops')) {
+          channel.client.get_channel('#web-ops').send('I have banned ' + user.name + ' from ' + channel.name);
+        }
+      }, 2000);
+    }
+  });
 
 	this.load_ecma_ref();
 
@@ -311,7 +339,7 @@ JSBot.prototype.ecma = function(context, text) {
 	var ref = this.ecma_ref, ch = text.charCodeAt(0);
 
 	// If text begins with a number, the search must match at the beginning of the string
-	var muststart = ch >= 48 && ch <= 57; 
+	var muststart = ch >= 48 && ch <= 57;
 
 	for (var i = 0, len = ref.length; i < len; i++) {
 		var item = ref[i], title = item.title.toLowerCase();
