@@ -159,7 +159,7 @@ JSBot.prototype.init = function() {
       channel.client.get_user('chanserv').send('op ' + channel.name + ' ' + channel.client.profile.nick);
       setTimeout(function() {
         channel.client.raw('MODE ' + channel.name + ' +b *!*@' + user.host);
-        channel.client.raw('KICK ' + channel.name + ' ' + user.name + ' Banned for using bad language');
+        channel.client.raw('KICK ' + channel.name + ' ' + user.name + ' :Banned for using bad language');
         channel.client.get_user('chanserv').send('deop ' + channel.name + ' ' + channel.client.profile.nick);
         // Ella may or may not be in #web-ops
         if (channel.client.get_channel('#web-ops')) {
