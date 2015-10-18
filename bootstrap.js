@@ -118,6 +118,7 @@ JSBot.prototype.init = function() {
 				channel = context.client.get_channel(channel);
 				text = text.replace(/^(\#[a-zA-Z0-9-]+) /, "");
 				channel.send(text.trim());
+		    
 			}
 		}
 	});
