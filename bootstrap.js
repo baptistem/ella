@@ -116,6 +116,12 @@ JSBot.prototype.init = function() {
 
 	this.register_command("beers", this.do_beers);
 
+  this.register_command("giveKarma", hashwebAPI.giveKarma);
+
+  this.register_command("karma", hashwebAPI.karma);
+
+  this.register_command("karmaLevel", hashwebAPI.karmaLevel);
+
 	this.register_command("calc", this.calc, {
 		help: "Wolfram Alpha calculations. Usage !calc [query]"
 	});

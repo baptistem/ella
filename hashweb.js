@@ -1,10 +1,11 @@
 var http = require("http");
-var fs   = require("fs"); 
+var fs   = require("fs");
 var request = require("request");
 var moment = require("moment");
 
-var userUrl = "http://hashweb.org/api/stats/users/";
+var userUrl = "http://192.168.1.16:8000/api/stats/users/";
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+var karmaUsers = [];
 
 function callStats(user, callback) {
     request(userUrl + user, function(error, response, body) {
@@ -15,6 +16,10 @@ function callStats(user, callback) {
     })
 }
 
+function addKarma(user, callback) {
+  request.post({url: 'http://192.168.1.16:8000/api/stats/users/'+ user +'/addkarma', form:{ username: user, points: 1 }}, callback)
+}
+
 function isAuth(host) {
     for (var i=0;i < config.users.length ; i++) {
         if (config.users[i].host === host) {
@@ -23,6 +28,20 @@ function isAuth(host) {
     }
     return false;
 }
+
+
+// this will remove people from the karma list after a period of time
+function karmaChecker() {
+  console.log('KARMA CHECKER RUNNING');
+  for (i in karmaUsers) {
+    if ((new Date() - karmaUsers[i]) > 86400000) { // 24 hours
+      console.log('removing ' + i);
+      delete karmaUsers[i]; // remove them from the list so they can add karma again
+    }
+  }
+}
+
+
 
 module.exports = {
 
@@ -87,5 +106,38 @@ module.exports = {
         } else {
             context.channel.send_reply(context.sender, "Oops, looks like you're not authorized!");
         }
+    },
+
+    giveKarma: function(context, user) {
+      karmaChecker();
+      if (user in karmaUsers) {
+        context.channel.send_reply(context.sender, "Sorry, looks like you've already used your karma allowance for now, try again later");
+        return;
+      }
+      addKarma(user, function(err, rsp, body) {
+        var response = JSON.parse(body);
+        response.statusCode = parseInt(response.statusCode);
+        if (response.statusCode === 200) {
+          context.channel.send_reply(context.sender, response.response);
+          karmaUsers[user] = new Date(); // store the time when they added karma, we can use it later
+        } else if (response.statusCode === 404) {
+          context.channel.send_reply(context.sender, "oops, that user doesn't seem to exist right now");
+        } else {
+          context.channel.send_reply(context.sender, "oops, Karma service is down for now");
+        }
+      });
+    },
+
+    karma: function(context) {
+      callStats(context.intent.name, function(data) {
+            context.channel.send_reply(context.sender, "Your karma level is: " + data.karma);
+        });
+    },
+
+    karmaLevel: function(context, user) {
+      callStats(user, function(data) {
+            context.channel.send_reply(context.sender, user + "'s karma level is: " + data.karma);
+        });
     }
+
 }
