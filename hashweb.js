@@ -132,13 +132,13 @@ module.exports = {
       });
     },
 
-    karmaHelp: function(context, user) {
+    karmaHelp: function(context) {
       context.channel.send_reply(context.sender, "Every user has Karma points, these can be gained by helping people or having someone give you karma with !giveKarma [user], you can check other user's karma with !karmaLevel [user], or your own with just !karma");
     },
 
     karma: function(context, help) {
       if (typeof help !== "undefined" && help === "help") {
-        karmaHelp()
+        module.exports.karmaHelp(context)
         return
       }
       callStats(context.intent.name, function(data) {
