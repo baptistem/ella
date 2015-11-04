@@ -112,10 +112,11 @@ module.exports = {
       karmaChecker();
       if (user in karmaUsers) {
         context.channel.send_reply(context.sender, "Sorry, looks like you've already used your karma allowance for now, try again later");
-        return;
+        return
       }
       if (context.intent.name.toLowerCase() === user.toLowerCase()) {
         context.channel.send_reply(context.sender, "You cannot give Karma points to yourself!");
+        return
       }
       addKarma(user, function(err, rsp, body) {
         var response = JSON.parse(body);
