@@ -110,7 +110,7 @@ module.exports = {
 
     giveKarma: function(context, user) {
       karmaChecker();
-      if (context.intent.name in karmaUsers) {
+      if (context.intent.host in karmaUsers) { // users were changing their names then adding karma again, try using host instead
         context.channel.send_reply(context.sender, "Sorry, looks like you've already used your karma allowance for now, try again later");
         return
       }
@@ -123,7 +123,7 @@ module.exports = {
         response.statusCode = parseInt(response.statusCode);
         if (response.statusCode === 200) {
           context.channel.send_reply(context.sender, response.response);
-          karmaUsers[context.intent.name] = new Date(); // store the time when they added karma, we can use it later
+          karmaUsers[context.intent.host] = new Date(); // store the time when they added karma, we can use it later
         } else if (response.statusCode === 404) {
           context.channel.send_reply(context.sender, "oops, that user doesn't seem to exist right now");
         } else {
