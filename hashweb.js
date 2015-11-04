@@ -3,7 +3,7 @@ var fs   = require("fs");
 var request = require("request");
 var moment = require("moment");
 
-var userUrl = "http://192.168.1.16:8000/api/stats/users/";
+var userUrl = "http://hashweb.org/api/stats/users/";
 var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 var karmaUsers = [];
 
@@ -17,7 +17,7 @@ function callStats(user, callback) {
 }
 
 function addKarma(user, callback) {
-  request.post({url: 'http://192.168.1.16:8000/api/stats/users/'+ user +'/addkarma', form:{ username: user, points: 1 }}, callback)
+  request.post({url: 'http://hashweb.org/api/stats/users/'+ user +'/addkarma', form:{ username: user, points: 1 }}, callback)
 }
 
 function isAuth(host) {
