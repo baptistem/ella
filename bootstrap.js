@@ -164,9 +164,28 @@ JSBot.prototype.init = function() {
   /* This will allow ella to kick/ban if certain words are said within a message */
   this.on("message", function(channel, user, msg) {
     if (isBanWord(msg)) {
+      var banMask = '*!';
+      if (user.host.indexOf('gateway/') !== -1) {
+        if (user.host.indexOf('/ip.') !== -1) {
+          // If it's a web gateway, we want to make it harder to evade by using
+          // a normal client, so knock out their IP
+          var realIP = user.host.match(/\/ip\.(.*)$/);
+          // The extra * after @ is a special case for kiwiirc, a normal ip mask
+          // doesn't match them (thankfully most people don't know that).
+          banMask += '*@*' + realIP;
+        } else {
+          var providerCloak = user.host.slice(0, user.host.indexOf('/x') + 1);
+          // This is a little hard to read, but we want to ban a form of
+          // *!*user@gateway/type/provider/* to stop ban evasion by changing the
+          // random string at the end that syn adds
+          banMask += '!*' + user.user + '@' + providerCloak + '*';
+        }
+      } else {
+        banMask += '@' + user.host;
+      }
       channel.client.get_user('chanserv').send('op ' + channel.name + ' ' + channel.client.profile.nick);
       setTimeout(function() {
-        channel.client.raw('MODE ' + channel.name + ' +b *!*@' + user.host);
+        channel.client.raw('MODE ' + channel.name + ' +b ' + banMask);
         channel.client.raw('KICK ' + channel.name + ' ' + user.name + ' :Banned for using bad language');
         channel.client.get_user('chanserv').send('deop ' + channel.name + ' ' + channel.client.profile.nick);
         // Ella may or may not be in #web-ops
