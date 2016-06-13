@@ -188,7 +188,7 @@ JSBot.prototype.ddg = function(context, text) {
 	  if (!error && response.statusCode == 200) {
 	  		try {
 	  			body = JSON.parse(body);
-	  			if (body.Abstract && body.Results && body.Results[0].FirstURL) {
+	  			if (body.Abstract && body.Results && body.Results.Length>0 && body.Results[0].FirstURL) {
 	  				context.channel.send_reply(context.sender, body.Abstract + " : " + body.Results[0].FirstURL);
 	  			}
 	  			else if (body.Abstract) {
