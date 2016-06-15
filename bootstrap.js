@@ -191,7 +191,10 @@ JSBot.prototype.ddg = function(context, text) {
 	  			if (body.Abstract && body.Results && body.Results.Length>0 && body.Results[0].FirstURL) {
 	  				context.channel.send_reply(context.sender, body.Abstract + " : " + body.Results[0].FirstURL);
 	  			}
-	  			else if (body.Abstract) {
+                                else if (body.AbstractURL && body.Abstract && body.Abstract.contains("<pre>") && body.Abstract.split("</pre>").length>1){
+                                        context.channel.send_reply(context.sender,body.Abstract.split("</pre>")[1]+" cf: "+body.AbstractURL)
+                                }
+                                else if (body.Abstract) {
 	  				context.channel.send_reply(context.sender, body.Abstract);
 	  			}
 	  			else if (body.AbstractURL) {
